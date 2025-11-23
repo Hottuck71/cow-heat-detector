@@ -1,54 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Stall Monitor — Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cattle Monitor AI</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div id="app" class="app">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="logo">🐄</div>
-        <div>
-          <div class="title">Stall Monitor</div>
-          <div class="subtitle">Farm camera dashboard</div>
-        </div>
-      </div>
+  <div id="container">
 
-      <div class="add-camera">
-        <input id="camInput" placeholder="rtsp:// or http:// or file:///..." />
-        <button id="addBtn">Add</button>
-      </div>
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <h2>Cameras</h2>
 
-      <div class="cams-title">Cameras</div>
-      <div id="camList" class="cam-list">
-        <!-- camera items inserted here -->
-      </div>
+      <ul id="cameraList"></ul>
 
-      <div class="footer-note">Status: <span id="status">idle</span></div>
+      <button id="addCameraBtn">+ Add Camera</button>
     </aside>
 
-    <main class="main">
-      <div class="grid-header">
-        <h2>Live Feeds</h2>
-        <div class="controls">
-          <button id="refreshBtn">Refresh</button>
-        </div>
-      </div>
+    <!-- MAIN VIDEO PANEL -->
+    <main id="mainPanel">
+      <h1>Live Monitoring</h1>
 
-      <div id="liveGrid" class="live-grid">
-        <!-- live feed cards -->
-      </div>
+      <div id="videoGrid"></div>
     </main>
 
-    <aside class="clips">
-      <h3>Recent Clips</h3>
-      <div id="clipList" class="clip-list">
-        <!-- clip cards -->
-      </div>
+    <!-- CLIPS PANEL -->
+    <aside id="clipsPanel">
+      <h2>Recent Clips</h2>
+      <div id="clipsList"></div>
     </aside>
+
+  </div>
+
+  <!-- ADD CAMERA MODAL -->
+  <div id="modal" class="hidden">
+    <div class="modalContent">
+      <h3>Add New Camera</h3>
+
+      <input id="cameraUrlInput" type="text"
+        placeholder="Enter camera URL (RTSP or HTTP)" />
+
+      <button id="saveCameraBtn">Save</button>
+      <button id="closeModalBtn" class="cancel">Cancel</button>
+    </div>
   </div>
 
   <script src="app.js"></script>
