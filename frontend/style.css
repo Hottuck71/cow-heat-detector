@@ -1,101 +1,170 @@
-:root{
-  --bg:#0b1220;
-  --panel:#0f1724;
-  --muted:#9aa6b2;
-  --accent:#2563eb; /* blue highlight */
-  --card:#0b1420;
-  --glass: rgba(255,255,255,0.03);
+/* ------------ GENERAL ------------- */
+
+body {
+  margin: 0;
+  background: #0f0f11;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  background:linear-gradient(180deg,#071226 0%, #071822 100%);
-  color:#e6eef8;
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  min-height:100vh;
+#container {
+  display: grid;
+  grid-template-columns: 260px 1fr 300px;
+  height: 100vh;
 }
 
-/* app layout */
-.app{
-  display:grid;
-  grid-template-columns: 320px 1fr 360px;
-  gap:18px;
-  padding:20px;
-  align-items:start;
-  max-width:1400px;
-  margin:18px auto;
+/* ------------ SIDEBAR ------------- */
+
+#sidebar {
+  background: #151518;
+  padding: 20px;
+  border-right: 1px solid #222;
 }
 
-/* Sidebar */
-.sidebar{
-  background:var(--panel);
-  border-radius:14px;
-  padding:18px;
-  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-}
-.brand{display:flex;gap:12px;align-items:center;margin-bottom:12px}
-.logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-size:20px}
-.title{font-weight:700;font-size:16px}
-.subtitle{font-size:12px;color:var(--muted)}
-
-.add-camera{display:flex;gap:8px;margin-bottom:12px}
-.add-camera input{
-  flex:1;padding:10px;border-radius:8px;border:none;background:var(--glass);color:inherit;outline:none;
-}
-.add-camera button{
-  background:var(--accent);border:none;padding:10px 12px;border-radius:8px;color:white;cursor:pointer;
-  box-shadow:0 6px 18px rgba(37,99,235,0.16);
+#sidebar h2 {
+  margin: 0 0 15px 0;
+  font-size: 20px;
 }
 
-.cams-title{margin-top:6px;margin-bottom:8px;color:var(--muted);font-size:13px}
-.cam-list{display:flex;flex-direction:column;gap:8px;max-height:58vh;overflow:auto;padding-right:6px}
-.cam-card{
-  display:flex;gap:10px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:8px;border-radius:10px;
-  cursor:pointer;transition:transform .12s, box-shadow .12s;
+#cameraList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.cam-card:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(2,6,23,0.5)}
-.cam-thumb{width:58px;height:40px;object-fit:cover;border-radius:6px;background:#03101a}
-.cam-meta{flex:1}
-.cam-meta .name{font-weight:600;font-size:13px}
-.cam-meta .url{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-.footer-note{margin-top:12px;font-size:12px;color:var(--muted)}
+#cameraList li {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
 
-/* Main / Live Grid */
-.main{background:transparent;padding:0}
-.grid-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.grid-header h2{margin:0;font-size:18px}
-.controls button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:6px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
+#cameraList li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
-.live-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+#addCameraBtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #2d7dff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 
-/* Live card */
-.feed-card{background:var(--card);padding:10px;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;gap:8px}
-.feed-media{background:#000;border-radius:8px;height:220px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.feed-media img, .feed-media video{width:100%;height:100%;object-fit:cover}
-.feed-info{display:flex;justify-content:space-between;align-items:center}
-.feed-title{font-weight:600}
-.feed-actions button{background:transparent;border:1px solid rgba(255,255,255,0.05);padding:6px 8px;border-radius:8px;color:var(--muted);cursor:pointer}
+#addCameraBtn:hover {
+  background: #1e5ccc;
+}
 
-/* Clips sidebar */
-.clips{background:var(--panel);border-radius:14px;padding:14px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-.clips h3{margin:0 0 8px 0}
-.clip-list{display:flex;flex-direction:column;gap:10px;max-height:74vh;overflow:auto}
-.clip-card{display:flex;gap:10px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);padding:8px;border-radius:10px}
-.clip-thumb{width:100px;height:64px;object-fit:cover;border-radius:6px}
-.clip-meta{flex:1;font-size:13px}
-.clip-meta .type{font-weight:700}
-.clip-meta .time{color:var(--muted);font-size:12px}
-.clip-actions button{background:var(--accent);border:none;padding:6px 8px;border-radius:8px;color:white;cursor:pointer}
+/* ------------ MAIN PANEL ------------- */
 
-/* responsive */
-@media(max-width:1100px){
-  .app{grid-template-columns: 1fr; padding:12px;}
-  .clips{order:3}
-  .sidebar{order:1;margin-bottom:12px}
-  .main{order:2;margin-bottom:12px}
-  .live-grid{grid-template-columns:1fr}
+#mainPanel {
+  padding: 20px;
+}
+
+#mainPanel h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+#videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 15px;
+}
+
+.videoCard {
+  background: #1a1a1e;
+  border-radius: 15px;
+  padding: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.videoCard video,
+.videoCard img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* ------------ CLIPS PANEL ------------- */
+
+#clipsPanel {
+  background: #151518;
+  padding: 20px;
+  border-left: 1px solid #222;
+}
+
+#clipsPanel h2 {
+  margin: 0 0 10px 0;
+}
+
+#clipsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  height: calc(100vh - 90px);
+}
+
+.clipThumb {
+  width: 100%;
+  height: 140px;
+  background: #222;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* ------------ ADD CAMERA MODAL ------------- */
+
+#modal.hidden {
+  display: none;
+}
+
+#modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  background: #1b1b20;
+  padding: 25px;
+  width: 350px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.modalContent input {
+  width: 100%;
+  padding: 10px;
+  background: #121214;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.modalContent button {
+  padding: 10px 20px;
+  border: none;
+  margin: 5px;
+  background: #2d7dff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #444;
 }
