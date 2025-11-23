@@ -1,0 +1,29 @@
+body {
+  background:#1a1a1a;
+  color:white;
+  font-family:Arial;
+}
+.container {
+  max-width:800px;
+  margin:auto;
+  padding:20px;
+}
+.add-box {
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+input {
+  flex:1;
+  padding:10px;
+  border-radius:6px;
+  border:none;
+}
+button {
+  padding:10px;
+  background:#007aff;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
