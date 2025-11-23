@@ -1,20 +1,54 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Cattle Monitor</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stall Monitor — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="container">
-    <h1>Cattle AI Monitor</h1>
+  <div id="app" class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">🐄</div>
+        <div>
+          <div class="title">Stall Monitor</div>
+          <div class="subtitle">Farm camera dashboard</div>
+        </div>
+      </div>
 
-    <div class="add-box">
-      <input id="camInput" placeholder="Enter Camera IP or URL..." />
-      <button onclick="addCam()">Add</button>
-    </div>
+      <div class="add-camera">
+        <input id="camInput" placeholder="rtsp:// or http:// or file:///..." />
+        <button id="addBtn">Add</button>
+      </div>
 
-    <div id="cameraList"></div>
+      <div class="cams-title">Cameras</div>
+      <div id="camList" class="cam-list">
+        <!-- camera items inserted here -->
+      </div>
+
+      <div class="footer-note">Status: <span id="status">idle</span></div>
+    </aside>
+
+    <main class="main">
+      <div class="grid-header">
+        <h2>Live Feeds</h2>
+        <div class="controls">
+          <button id="refreshBtn">Refresh</button>
+        </div>
+      </div>
+
+      <div id="liveGrid" class="live-grid">
+        <!-- live feed cards -->
+      </div>
+    </main>
+
+    <aside class="clips">
+      <h3>Recent Clips</h3>
+      <div id="clipList" class="clip-list">
+        <!-- clip cards -->
+      </div>
+    </aside>
   </div>
 
   <script src="app.js"></script>
